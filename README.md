@@ -3,7 +3,7 @@
 Exemple d'utilisation de scikit-learn
 
 
-* [Apprentissage Non Supervisé](https://ressources.labomedia.org/apprentissage_non_supervise#unsupervised_learning)
+* [scikit-learn Exemples](https://ressources.labomedia.org/scikit-learn_exemples)
 
 
 ### Merci à
