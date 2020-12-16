@@ -1,27 +1,40 @@
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import confusion_matrix
+from sklearn import metrics
 
-f = np.load('mnist.npz')
+# Digits de MNIST
+fichier = np.load('mnist.npz')
 
-X_train = f['x_train']
-X_test = f['x_test']
-X_train = X_train.reshape(60000, 784)
-X_test = X_test.reshape(10000, 784)
-y_train = f['y_train']
-y_test = f['y_test']
+train, test = 10000, 1000
+X_train = fichier['x_train']
+X_train = X_train[:train]
+X_train = X_train.reshape(train, 784)
+y_train = fichier['y_train']
+y_train = y_train[:train]
 
-clf = KNeighborsClassifier(n_neighbors=3, n_jobs=8)
-clf.fit(X_train, y_train)
+X_test = fichier['x_test']
+X_test = X_test[:test]
+X_test = X_test.reshape(test, 784)
+y_test = fichier['y_test']
+y_test = y_test[:test]
 
-score = clf.score(X_test, y_test)
+classifier = KNeighborsClassifier(n_neighbors=3, n_jobs=-1)
+classifier.fit(X_train, y_train)
 
+score = classifier.score(X_test, y_test)
 print("score:", score)
 
 # Predictions for test data
-predicted = clf.predict(X_test)
+predicted = classifier.predict(X_test)
+
 # Print confusion matrix
-confusion = confusion_matrix(y_test, predicted)
+confusion = metrics.confusion_matrix(y_test, predicted)
 print("Matrice de confusion:\n", confusion)
+
+disp = metrics.plot_confusion_matrix(classifier, X_test, y_test)
+disp.figure_.suptitle("Confusion Matrix")
+
+plt.show()
