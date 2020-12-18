@@ -44,7 +44,7 @@ np.random.seed(42)
 # Digits de MNIST
 fichier = np.load('mnist.npz')
 
-train, test = 1000, 100
+train, test = 10000, 100
 X_train = fichier['x_train']
 X_train = X_train[:train]
 X_train = X_train.reshape(train, 784)
