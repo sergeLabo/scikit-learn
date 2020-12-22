@@ -5,7 +5,8 @@
 
 # divers non suivi
 old/
-
+npz1/
+doc/
 
 # Forced
 #!foo.txt

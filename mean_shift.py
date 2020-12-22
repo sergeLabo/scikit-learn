@@ -8,15 +8,22 @@ from sklearn.cluster import MeanShift, estimate_bandwidth
 from sklearn.datasets import make_blobs
 
 
-def get_datas(fichier):
+def get_datas(f):
 
-    train = 10000
-    x_a = fichier['x'][:train]
-    y_a = fichier['y'][:train]
-    z_a = fichier['z'][:train]
-    t_a = fichier['t'][:train]
+    fichier = np.load('./npz/' + f)
 
-    X = np.zeros((train, 2))
+    x_a = fichier['x']
+    y_a = fichier['y']
+    z_a = fichier['z']
+    t_a = fichier['t']
+
+    # #train = 10000
+    # #x_a = x_a[:train]
+    # #y_a = y_a[:train]
+    # #z_a = z_a[:train]
+    # #t_a = t_a[:train]
+
+    X = np.zeros((len(x_a), 2))
     offset = t_a[0]
 
     for i in range(x_a.shape[0]):
@@ -181,8 +188,7 @@ def main():
 def main1():
     l = os.listdir('./npz')
     for f in l:
-        fichier = np.load('./npz/' + f)
-        X = get_datas(fichier)
+        X = get_datas(f)
         for i in range(5):
             bandwidth = 10000 + i*10000
             print(bandwidth)
