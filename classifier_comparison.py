@@ -75,10 +75,10 @@ if src == "original":
                 make_circles(noise=0.2, factor=0.5, random_state=1),
                 linearly_separable]
     # Recherche du format des datas
-    print(len(datasets[1]), len(datasets[1][0]), len(datasets[1][1]))
-    print(type(datasets[1][0][0]), datasets[1][0][0].shape)
-    print(datasets[1][0][0])
-    print("\n\ndatasets[1] =\n", datasets[1], "\n\n")
+    # #print(len(datasets[1]), len(datasets[1][0]), len(datasets[1][1]))
+    # #print(type(datasets[1][0][0]), datasets[1][0][0].shape)
+    # #print(datasets[1][0][0])
+    # #print("\n\ndatasets[1] =\n", datasets[1], "\n\n")
     # 2 100 100
     # <class 'numpy.ndarray'> (2,)
     # [-0.38289117 -0.09084004]

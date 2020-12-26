@@ -10,7 +10,7 @@ from sklearn.datasets import make_blobs
 
 def get_datas(f):
 
-    fichier = np.load('./npz/' + f)
+    fichier = np.load(f)
 
     x_a = fichier['x']
     y_a = fichier['y']
@@ -174,26 +174,22 @@ def plot_cluster(X, labels, cluster_centers, labels_unique, n_clusters_, f):
     plt.show()
 
 def main():
-    l = os.listdir('./npz')
-    band = []
-    for f in l:
-        fichier = np.load('./npz/' + f)
-        X = get_datas(fichier)
-        bandwidth = get_bandwidth(X)
-        band.append(bandwidth)
-        labels, cluster_centers, labels_unique, n_clusters_ = get_cluster(bandwidth, X)
-        plot_cluster(X, labels, cluster_centers, labels_unique, n_clusters_, f)
-    print(band)
+    f = '12_02_marche_dehors_40Hz.npz'
+    X = get_datas(f)
+    bandwidth = get_bandwidth(X)
+    print(bandwidth)
+    labels, cluster_centers, labels_unique, n_clusters_ = get_cluster(bandwidth, X)
+    plot_cluster(X, labels, cluster_centers, labels_unique, n_clusters_, f)
+
 
 def main1():
-    l = os.listdir('./npz')
-    for f in l:
-        X = get_datas(f)
-        for i in range(5):
-            bandwidth = 10000 + i*10000
-            print(bandwidth)
-            labels, cluster_centers, labels_unique, n_clusters_ = get_cluster(bandwidth, X)
-            plot_cluster(X, labels, cluster_centers, labels_unique, n_clusters_, f)
+    f = '12_02_marche_dehors_40Hz.npz'
+    X = get_datas(f)
+    for i in range(5):
+        bandwidth = 10000 + i*10000
+        print(bandwidth)
+        labels, cluster_centers, labels_unique, n_clusters_ = get_cluster(bandwidth, X)
+        plot_cluster(X, labels, cluster_centers, labels_unique, n_clusters_, f)
 
 # #75292.89657205358,
 # #95446.45356769333,
@@ -205,5 +201,3 @@ if __name__ == '__main__':
     main1()
 
 # bandwidth = 40 000 est bien !
-
-# test github

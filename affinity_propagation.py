@@ -23,8 +23,9 @@ from sklearn.datasets import make_blobs
 # #print(X)
 # #print(labels_true)
 
-# Digits de MNIST
-fichier = np.load('12_03_boulanger.npz')
+f = '12_02_marche_dehors_40Hz.npz'
+
+fichier = np.load(f)
 
 train = 1000
 x_a = fichier['x'][:train]
